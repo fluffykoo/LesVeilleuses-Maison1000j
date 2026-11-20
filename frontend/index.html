@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les Veilleuses — Maisons des 1000 jours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="day">
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter>
+    <filter id="wc" x="-30%" y="-30%" width="160%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" scale="60"/><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+</svg>
+
+<header class="top wrap">
+  <a class="logo" href="#top" id="top">
+    <svg width="46" height="46" viewBox="0 0 40 40" aria-hidden="true"><g filter="url(#rough)"><path d="M6 19 L20 7 L34 19 V34 H6 Z" class="logo-house"/><circle cx="20" cy="24" r="4.5" class="logo-dot"/></g></svg>
+    <span class="px">Maisons des<br>1000 jours</span>
+  </a>
+  <nav aria-label="Navigation principale" class="nav">
+    <a href="#video" class="navlink px">la vidéo<svg viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true"><path d="M6 26C30 22 70 25 96 22M14 30C40 27 66 29 90 28"/></svg></a>
+    <a href="#carte" class="navlink px">la carte<svg viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="20" rx="48" ry="15" transform="rotate(-3 50 20)"/></svg></a>
+    <a href="#asso" class="navlink px">l’association<svg viewBox="0 0 100 36" preserveAspectRatio="none" aria-hidden="true"><path d="M4 28C20 18 34 32 50 24S80 18 96 26"/></svg></a>
+    <a href="#video" class="btn px">allumer mon point</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero wrap">
+  <div class="hero-text">
+    <p class="tag px">campagne nationale</p>
+    <h1 class="px">Les 1000 premiers jours, <span class="red">ça compte.</span></h1>
+    <p class="lead">De la grossesse aux 2 ans de l’enfant, cette période façonne toute une vie. Regardez la vidéo, puis allumez votre point sur la carte.</p>
+    <div class="row"><a href="#video" class="btn btn-blue px">regarder la vidéo</a><a href="#carte" class="btn btn-card px">voir la carte</a></div>
+  </div>
+  <div class="hero-art">
+    <svg viewBox="0 0 720 470" role="img" aria-label="Une maison, un adulte qui porte un bébé, et une veilleuse posée sur un tabouret">
+      <circle cx="200" cy="250" r="170" class="wb1" filter="url(#wc)"/><circle cx="520" cy="210" r="150" class="wb2" filter="url(#wc)"/><circle cx="380" cy="380" r="120" class="wb3" filter="url(#wc)"/>
+      <g class="stars" id="stars"></g>
+      <g filter="url(#rough)">
+        <path d="M20 420 C 200 405, 480 432, 700 414" class="ground"/>
+        <path d="M170 418 V250 L280 165 L390 250 V418 Z" class="house"/>
+        <path d="M150 266 L280 152 L410 266" class="roof"/>
+        <rect x="206" y="280" width="62" height="58" class="win"/>
+        <path d="M237 280 V338 M206 309 H268" class="ground"/>
+        <rect x="300" y="330" width="52" height="88" rx="26" fill="var(--blue)"/>
+        <circle cx="476" cy="268" r="24" fill="var(--pink)"/><path d="M446 418 V320 Q446 296 476 296 Q506 296 506 320 V418 Z" fill="var(--pink)"/>
+        <circle cx="512" cy="322" r="15" fill="var(--orange)"/><path d="M494 360 Q494 340 512 340 Q530 340 530 360 V378 H494 Z" fill="var(--orange)"/>
+        <path d="M600 418 V370 M646 418 V370" class="stool"/><rect x="588" y="356" width="70" height="16" rx="4" fill="var(--brown)"/>
+        <circle cx="623" cy="300" r="70" class="lamp-halo" filter="url(#blur)"/>
+        <path d="M600 352 Q600 300 623 296 Q646 300 646 352 Z" class="lamp"/>
+        <circle cx="623" cy="290" r="9" fill="var(--red)"/>
+      </g>
+    </svg>
+    <button type="button" id="lampBtn" class="lamp-btn px" aria-pressed="false">click me ↙</button>
+    <p class="caption px" id="caption">allume la veilleuse pour voir la carte la nuit</p>
+  </div>
+</section>
+
+<section id="video" class="video wrap-narrow">
+  <div class="polaroid">
+    <span class="tape t1" aria-hidden="true"></span><span class="tape t2" aria-hidden="true"></span>
+    <div class="frame">
+      <div class="screen" id="screen">
+        <!-- Illustration provisoire, remplacée par la vraie vidéo quand VIDEO_SRC est renseigné (voir app.js) -->
+        <svg class="poster" viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g filter="url(#rough)"><rect width="1200" height="675" fill="#CFE0F3"/><circle cx="930" cy="160" r="74" fill="#E9B93B"/><path d="M0 520 C 260 450 520 560 760 500 C 940 455 1080 480 1200 470 V675 H0Z" fill="#D3E8CF"/><path d="M430 520 V340 L560 240 L690 340 V520 Z" fill="#fff" stroke="#1a1a1a" stroke-width="5"/><path d="M410 352 L560 228 L710 352" fill="none" stroke="#C9302C" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><rect x="530" y="420" width="60" height="100" rx="30" fill="#3A78C4"/><circle cx="300" cy="400" r="26" fill="#D65FA8"/><rect x="268" y="436" width="64" height="110" rx="32" fill="#D65FA8"/><circle cx="370" cy="452" r="18" fill="#E8922E"/><rect x="348" y="478" width="44" height="70" rx="22" fill="#E8922E"/><circle cx="830" cy="410" r="26" fill="#3A8A3F"/><rect x="798" y="446" width="64" height="104" rx="32" fill="#3A8A3F"/></g></svg>
+        <video id="realVideo" playsinline hidden></video>
+
+        <button type="button" class="play" id="playBtn" aria-label="Lire la vidéo"><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 L19 12 L8 19 Z" fill="#1a1a1a"/></svg></button>
+        <div class="overlay" id="playingOverlay" hidden><p class="bubble px">Chaque jour compte…</p></div>
+        <div class="bar px" id="bar"><span id="timeLabel">0:00</span><div class="track"><div class="fill" id="barFill"></div></div><span id="duration">–:–</span></div>
+
+        <div class="overlay dark" id="endScreen" hidden>
+          <form id="form" class="card form" novalidate>
+            <p class="px form-title">Merci d’avoir regardé ! Allumez votre point.</p>
+            <label for="cp" class="px">code postal <span class="red">*</span></label>
+            <input id="cp" name="cp" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="69003" aria-describedby="cpErr" class="px" required>
+            <p id="cpErr" class="err" role="alert"></p>
+            <label for="email" class="px">adresse e-mail <small>(facultatif)</small></label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.fr">
+            <button type="submit" class="btn btn-red px" id="submitBtn">allumer mon point</button>
+            <p class="small">Le code postal sert seulement à placer un point anonyme.</p>
+          </form>
+        </div>
+        <div class="overlay dark" id="afterScreen" hidden><a href="#carte" class="btn px">vous êtes une veilleuse ✓ voir la carte ↓</a></div>
+      </div>
+      <p class="polaroid-caption px">chaque jour compte…</p>
+    </div>
+  </div>
+  <p class="note">Vidéo animée de formation. À la fin, un écran vous demande votre code postal.</p>
+</section>
+
+<section class="steps wrap">
+  <h2 class="px">comment ça marche</h2>
+  <div class="tiles">
+    <div class="tile" style="background:#F6E2A8;--rot:-1.2deg"><div class="px num">1</div><h3 class="px">Regardez la vidéo</h3><p>Une courte animation pour comprendre les enjeux des 1000 premiers jours.</p></div>
+    <div class="tile" style="background:#F3CFE3;--rot:.8deg"><div class="px num">2</div><h3 class="px">Indiquez votre code postal</h3><p>L’e-mail est facultatif : il sert à recevoir les prochaines actions de l’association.</p></div>
+    <div class="tile" style="background:#CFE0F3;--rot:-.6deg"><div class="px num">3</div><h3 class="px">Allumez votre point</h3><p>Il apparaît sur la carte, avec ceux de toutes les personnes formées.</p></div>
+  </div>
+  <a href="#carte" class="chev" aria-label="Descendre vers la carte">∨ ∨ ∨</a>
+</section>
+
+<section id="carte" class="map-section">
+  <div class="wrap">
+    <div class="map-head">
+      <p class="px red">après la vidéo</p>
+      <h2 class="px">allumez votre point sur la carte</h2>
+      <p class="lead">Chaque point représente une personne formée. Ensemble, faisons briller toute la France.</p>
+    </div>
+    <div class="map-grid">
+      <div class="map-card" id="mapCard">
+        <svg id="map" class="map" role="img" aria-label="Carte de France des personnes formées"></svg>
+        <p class="region-label px" id="regionLabel" aria-live="polite"></p>
+      </div>
+      <div class="side">
+        <div class="card panel" id="panelLocked">
+          <p class="px panel-title">votre point attend la fin de la vidéo</p>
+          <p class="muted">C’est en regardant la vidéo de formation qu’on devient une veilleuse. À la fin, indiquez votre code postal : votre point s’allumera ici.</p>
+          <a href="#video" class="btn btn-blue px">regarder la vidéo ↑</a>
+        </div>
+        <div class="card panel" id="panelLighting" hidden>
+          <p class="px panel-title">votre point s’allume…</p>
+          <p class="muted" id="lightingText"></p>
+        </div>
+        <div class="card panel" id="panelDone" hidden aria-live="polite">
+          <p class="px panel-title red">Votre point est allumé !</p>
+          <p id="doneText"></p>
+          <p class="muted" id="emailText" hidden>Merci ! Nous vous tiendrons informé·e des prochaines actions de l’association.</p>
+          <button type="button" class="btn btn-card px" id="restartBtn">recommencer</button>
+        </div>
+        <p class="counter px"><span class="red" id="count">…</span> points allumés partout en France<br><small id="domLine"></small></p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="asso" class="foot wrap">
+  <span class="muted">© Maisons des 1000 jours — <span id="year"></span></span>
+  <nav aria-label="Liens légaux" class="px foot-links"><a href="#" style="color:var(--green)">mentions légales</a><a href="#" style="color:var(--orange)">données personnelles</a><a href="#" style="color:var(--blue)">contact</a></nav>
+</footer>
+
+<script src="config.js"></script>
+<script src="france-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
